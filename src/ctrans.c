@@ -54,6 +54,9 @@
 #include <stdlib.h>
 #include <math.h>
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
 /* Include python and numpy header files */
 
 #include <Python.h>
