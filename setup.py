@@ -11,14 +11,8 @@ from Cython.Build import cythonize
 
 
 def c_ext():
-    if os.name == 'nt':
-        # we are on windows. Do not compile the extension. Tons of errors are
-        # spit out when we compile on AppVeyor.
-        # https://gist.github.com/ericdill/bdc86eb81e338ca4624b
-        return []
-
-    # compile for MacOS without openmp
-    if sys.platform == 'darwin':
+    # compile for MacOS and Windows without openmp
+    if sys.platform == 'darwin' or os.name == 'nt':
         return [Extension('skbeam.ext.ctrans', ['src/ctrans.c'])]
     # compile the extension on Linux.
     return [Extension('skbeam.ext.ctrans', ['src/ctrans.c'],
